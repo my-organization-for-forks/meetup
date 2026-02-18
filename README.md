@@ -202,6 +202,7 @@ TypeScript Backend Meetup은 TypeScript를 사용하는 백엔드 개발자들�
 <a href="https://github.com/BearMett" title="BearMett"><img src="https://images.weserv.nl/?url=github.com/BearMett.png&w=50&h=50&fit=cover&mask=circle&output=png" width="50" height="50" alt="BearMett" /></a>
 <a href="https://github.com/EHyang" title="EHyang"><img src="https://images.weserv.nl/?url=github.com/EHyang.png&w=50&h=50&fit=cover&mask=circle&output=png" width="50" height="50" alt="EHyang" /></a>
 <a href="https://github.com/kwon-hm" title="kwon-hm"><img src="https://images.weserv.nl/?url=github.com/kwon-hm.png&w=50&h=50&fit=cover&mask=circle&output=png" width="50" height="50" alt="kwon-hm" /></a>
+<a href="https://github.com/hsnyus-09" title="hsnyus-09"><img src="https://images.weserv.nl/?url=github.com/hsnyus-09.png&w=50&h=50&fit=cover&mask=circle&output=png" width="50" height="50" alt="hsnyus-09" /></a>
 
 # FAQ
 
