@@ -1,0 +1,59 @@
+name: Sync README Member Tables
+
+on:
+  push:
+    paths:
+      - "README.md"
+      - "data/readme-members.csv"
+      - "scripts/Update-ReadmeMemberTables.ps1"
+      - ".github/workflows/sync-readme-member-tables.yml"
+  pull_request:
+    paths:
+      - "README.md"
+      - "data/readme-members.csv"
+      - "scripts/Update-ReadmeMemberTables.ps1"
+      - ".github/workflows/sync-readme-member-tables.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate README member tables
+        shell: pwsh
+        run: ./scripts/Update-ReadmeMemberTables.ps1
+
+      - name: Verify README is up to date in pull requests
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          if git diff --quiet README.md; then
+            exit 0
+          fi
+
+          echo "README.md is out of date. The generated member tables should not be edited by hand."
+          echo "Update data/readme-members.csv and let the push workflow regenerate README.md."
+          git diff -- README.md
+          exit 1
+
+      - name: Commit generated README changes on push
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          if git diff --quiet README.md; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: sync README member tables [skip ci]"
+          git push
