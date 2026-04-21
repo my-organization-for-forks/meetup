@@ -1,4 +1,4 @@
-b# meetup
+# meetup
 
 ![logo](/public/logo/banner.png)
 
